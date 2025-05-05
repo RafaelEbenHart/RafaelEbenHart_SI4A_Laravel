@@ -2,20 +2,20 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Prodi;//penting
+use App\Models\Mahasiswa;
 use Illuminate\Http\Request;
 
-class ProdiController extends Controller
+class MahasiswaController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        // panggil model prodi menggunakan eloquent
-        $prodi = Prodi::all(); // perintah sql select * from prodi
-        //dd($prodi);
-        return view('prodi.index')->with('prodi',$prodi);
+        $mahasiswa = mahasiswa::all();//perintah sql select * from maha
+        // dd($mahasiswa);//dump and die
+        return view('mahasiswa.index')->with('mahasiwa',$mahasiswa);
+
     }
 
     /**
@@ -37,7 +37,7 @@ class ProdiController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Prodi $prodi)
+    public function show(Mahasiswa $mahasiswa)
     {
         //
     }
@@ -45,7 +45,7 @@ class ProdiController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Prodi $prodi)
+    public function edit(Mahasiswa $mahasiswa)
     {
         //
     }
@@ -53,7 +53,7 @@ class ProdiController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Prodi $prodi)
+    public function update(Request $request, Mahasiswa $mahasiswa)
     {
         //
     }
@@ -61,7 +61,7 @@ class ProdiController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Prodi $prodi)
+    public function destroy(Mahasiswa $mahasiswa)
     {
         //
     }

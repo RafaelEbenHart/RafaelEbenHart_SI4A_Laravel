@@ -1,5 +1,7 @@
-<h1>Prodi</h1>
+<h1>Program Studi</h1>
 
+@extends('layout.main')
+@section('content')
 <table>
     <tr>
         <th>Nama</th>
@@ -18,3 +20,4 @@
          </tr>
     @endforeach
 </table>
+@endsection

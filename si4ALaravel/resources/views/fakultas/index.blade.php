@@ -1,5 +1,7 @@
 <h1>Fakultas</h1>
 
+@extends('layout.main')
+@section('content')
 <table>
     <tr>
         <th>Nama</th>
@@ -16,3 +18,4 @@
         </tr>
     @endforeach
 </table>
+@endsection
