@@ -16,4 +16,12 @@ class Prodi extends Model
     {
         return $this->hasMany(Mahasiswa::class,'prodi_id', 'id');
     }
+
+    protected $fillable = [
+        'nama',
+        'singkatan',
+        'kaprodi',
+        'sekretaris',
+        'fakultas_id',
+    ];
 }

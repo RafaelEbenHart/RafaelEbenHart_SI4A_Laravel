@@ -30,6 +30,7 @@
             </div>
           </div>
           <div class="card-body">
+            <a href="{{ route('mahasiswa.create') }}" class="btn btn-primary">Tambah</a>
             <table>
                 <tr>
                     <th>Nama</th>
@@ -52,7 +53,7 @@
                      </tr>
 
             </table>
-
+            @endforeach
           </div>
           <!-- /.card-body -->
         </div>
@@ -60,5 +61,4 @@
       </div>
     </div>
     <!--end::Row-->
-    @endforeach
 @endsection

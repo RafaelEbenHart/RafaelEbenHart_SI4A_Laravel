@@ -11,4 +11,15 @@ class Mahasiswa extends Model
     {
         return $this->belongsTo(Prodi::class,'prodi_id', 'id');
     }
+
+    protected $fillable = [
+        'npm',
+        'nama',
+        'jk',
+        'tanggal_lahir',
+        'tempat_lahir',
+        'asal_sma',
+        'prodi_id',
+        'foto',
+    ];
 }
