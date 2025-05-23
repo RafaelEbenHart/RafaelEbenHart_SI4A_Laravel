@@ -52,9 +52,12 @@ class FakultasController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Fakultas $fakultas)
+    public function show($fakultas)
     {
         //
+        $fakultas = Fakultas::findOrFail($fakultas);
+        // dd($fakultas);
+        return view('fakultas.show', compact('fakultas'));
     }
 
     /**
