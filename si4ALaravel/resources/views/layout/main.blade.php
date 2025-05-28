@@ -42,7 +42,7 @@
     />
     <!--end::Third Party Plugin(Bootstrap Icons)-->
     <!--begin::Required Plugin(AdminLTE)-->
-    <link rel="stylesheet" href="{{ asset('css/adminlte.css') }}" />
+    <link rel="stylesheet" href="{{{asset('css/adminlte.css')}}}" />
     <!--end::Required Plugin(AdminLTE)-->
   </head>
   <!--end::Head-->
@@ -86,7 +86,7 @@
                   <div class="d-flex">
                     <div class="flex-shrink-0">
                       <img
-                        src="{{ asset('assets/img/user1-128x128.jpg') }}"
+                        src="{{asset('assets/img/user1-128x128.jpg')}}"
                         alt="User Avatar"
                         class="img-size-50 rounded-circle me-3"
                       />
@@ -112,7 +112,7 @@
                   <div class="d-flex">
                     <div class="flex-shrink-0">
                       <img
-                        src="{{ asset('assets/img/user8-128x128.jpg') }}"
+                        src="{{asset('assets/img/user8-128x128.jpg')}}"
                         alt="User Avatar"
                         class="img-size-50 rounded-circle me-3"
                       />
@@ -138,7 +138,7 @@
                   <div class="d-flex">
                     <div class="flex-shrink-0">
                       <img
-                        src="{{ asset('assets/img/user3-128x128.jpg') }}"
+                        src="{{asset('assets/img/user3-128x128.jpg')}}"
                         alt="User Avatar"
                         class="img-size-50 rounded-circle me-3"
                       />
@@ -203,22 +203,22 @@
             <li class="nav-item dropdown user-menu">
               <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
                 <img
-                  src="{{ asset('assets/img/user2-160x160.jpg') }}"
+                  src="{{asset('assets/img/user2-160x160.jpg')}}"
                   class="user-image rounded-circle shadow"
                   alt="User Image"
                 />
-                <span class="d-none d-md-inline">Alexander Pierce</span>
+                <span class="d-none d-md-inline">Evan kotak</span>
               </a>
               <ul class="dropdown-menu dropdown-menu-lg dropdown-menu-end">
                 <!--begin::User Image-->
                 <li class="user-header text-bg-primary">
                   <img
-                    src="{{ asset('assets/img/user2-160x160.jpg') }}"
+                    src="{{asset('assets/img/user2-160x160.jpg')}}"
                     class="rounded-circle shadow"
                     alt="User Image"
                   />
                   <p>
-                    Alexander Pierce - Web Developer
+                    Evan Gunawan - Web Developer
                     <small>Member since Nov. 2023</small>
                   </p>
                 </li>
@@ -257,7 +257,7 @@
           <a class='brand-link' href='/dist/pages/'>
             <!--begin::Brand Image-->
             <img
-              src="{{ asset('assets/img/AdminLTELogo.png') }}"
+              src="{{asset('assets/img/AdminLTELogo.png')}}"
               alt="AdminLTE Logo"
               class="brand-image opacity-75 shadow"
             />
@@ -309,21 +309,21 @@
                 </ul>
               </li>
               <li class="nav-item">
-                <a class='nav-link' href='{{ url('fakultas') }}'>
+                <a class='nav-link' href='{{url('fakultas')}}'>
                   <i class="nav-icon bi bi-palette"></i>
-                  <p>fakultas</p>
+                  <p>Fakultas</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a class='nav-link' href='{{ url('prodi') }}'>
+                <a class='nav-link' href='{{url('prodi')}}'>
                   <i class="nav-icon bi bi-palette"></i>
                   <p>Program Studi</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a class='nav-link' href='{{ url('mahasiswa') }}'>
+                <a class='nav-link' href='{{url('mahasiswa')}}'>
                   <i class="nav-icon bi bi-palette"></i>
-                  <p>Mahasiswa</p>
+                  <p>mahasiswa</p>
                 </a>
               </li>
               <li class="nav-item">
@@ -736,15 +736,15 @@
           <div class="container-fluid">
             <!--begin::Row-->
             <div class="row">
-                <div class="col-sm-6"><h3 class="mb-0">@yield('title')</h3></div>
-                <div class="col-sm-6">
-                  <ol class="breadcrumb float-sm-end">
-                    <li class="breadcrumb-item"><a href="#">Home</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">Unfixed Layout</li>
-                  </ol>
-                </div>
+              <div class="col-sm-6"><h3 class="mb-0">@yield('title')</h3></div>
+              <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-end">
+                  <li class="breadcrumb-item"><a href="#">Home</a></li>
+                  <li class="breadcrumb-item active" aria-current="page">@yield('title')</li>
+                </ol>
               </div>
-              <!--end::Row-->
+            </div>
+            <!--end::Row-->
           </div>
           <!--end::Container-->
         </div>
@@ -795,7 +795,7 @@
       crossorigin="anonymous"
     ></script>
     <!--end::Required Plugin(Bootstrap 5)--><!--begin::Required Plugin(AdminLTE)-->
-    <script src="{{ asset('js/adminlte.js') }}"></script>
+    <script src="{{asset('js/adminlte.js')}}"></script>
     <!--end::Required Plugin(AdminLTE)--><!--begin::OverlayScrollbars Configure-->
     <script>
       const SELECTOR_SIDEBAR_WRAPPER = '.sidebar-wrapper';
@@ -819,6 +819,41 @@
     </script>
     <!--end::OverlayScrollbars Configure-->
     <!--end::Script-->
+<!--Jquery CDN-->
+<script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.0/sweetalert.min.js"></script>
+<script type="text/javascript">
+    $('.show_confirm').click(function(event) {
+        var form = $(this).closest("form");
+        var nama = $(this).data("nama");
+        event.preventDefault();
+        swal({
+                title: `Apakah Anda yakin ingin menghapus data ${nama} ini?`,
+                text: "If you delete this, it will be gone forever.",
+                icon: "warning",
+                buttons: true,
+                dangerMode: true,
+            })
+            .then((willDelete) => {
+                if (willDelete) {
+                    form.submit();
+                }
+            });
+    });
+</script>
+
+@session('success')
+<script>
+    swal({
+    title: "Good job!",
+    text: "{{session('Success')}}",
+    icon: "success"
+  });
+</script>
+@endsession
+
+</body>
+</html>
   </body>
   <!--end::Body-->
 </html>

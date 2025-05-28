@@ -13,10 +13,9 @@ class MahasiswaController extends Controller
      */
     public function index()
     {
-        $mahasiswa = mahasiswa::all();//perintah sql select * from maha
+        $mahasiswa = mahasiswa::all(); //perintah sql select * from maha
         // dd($mahasiswa);//dump and die
-        return view('mahasiswa.index')->with('mahasiwa',$mahasiswa);
-
+        return view('mahasiswa.index')->with('mahasiwa', $mahasiswa);
     }
 
     /**
@@ -26,7 +25,7 @@ class MahasiswaController extends Controller
     {
         //
         $prodi = Prodi::all(); // ambil semua data prodi
-        return view('mahasiswa.create',compact('prodi'));// mengirimkan data prodi ke view mahasiswa.create
+        return view('mahasiswa.create', compact('prodi')); // mengirimkan data prodi ke view mahasiswa.create
     }
 
     /**
@@ -34,8 +33,7 @@ class MahasiswaController extends Controller
      */
     public function store(Request $request)
     {
-        $input = $request->validate(
-        [
+        $input = $request->validate([
             'npm' => 'required|unique:mahasiswa',
             'nama' => 'required',
             'jk' => 'required',
@@ -47,16 +45,15 @@ class MahasiswaController extends Controller
         ]);
 
         if ($request->file('foto')) {
-            $file = $request->file('foto');// ambil file foto
+            $file = $request->file('foto'); // ambil file foto
             $filename = time() . '.' . $file->getClientOriginalExtension();
-            $file->move(public_path('images'), $filename);// simpan file ke folder images
-            $input['foto'] = $filename;// simpan nama file ke database
+            $file->move(public_path('images'), $filename); // simpan file ke folder images
+            $input['foto'] = $filename; // simpan nama file ke database
         }
 
         Mahasiswa::create($input);
         // redirect ke route mahasiswa.index
         return redirect()->route('mahasiswa.index')->with('success', 'Mahasiswa Berhasil Ditambahkan');
-
     }
 
     /**
@@ -88,8 +85,21 @@ class MahasiswaController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Mahasiswa $mahasiswa)
+    public function destroy($mahasiswa)
     {
-        //
+        $mahasiswa = Mahasiswa::findOrFail($mahasiswa);
+
+        if ($mahasiswa->foto) {
+            $fotoPath = public_path('images/' . $mahasiswa->foto);
+            if (file_exists($fotoPath)) {
+                unlink($fotoPath);
+            }
+        }
+
+        //hapus data mahasiswa
+        $mahasiswa->delete();
+
+        //redirect ke halaman mahasiswa.index
+        return redirect()->route('mahasiswa.index')->with('success', 'Data mahasiswa berhasil dihapus!');
     }
 }
