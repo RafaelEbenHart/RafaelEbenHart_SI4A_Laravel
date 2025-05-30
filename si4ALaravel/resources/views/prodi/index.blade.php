@@ -30,6 +30,7 @@
                                     <th>Kaprodi</th>
                                     <th>Sekretaris</th>
                                     <th>Fakultas</th>
+                                    <th>Aksi</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -40,6 +41,17 @@
                                         <td>{{ $item->kaprodi }} </td>
                                         <td>{{ $item->sekretaris }} </td>
                                         <td>{{ $item->fakultas->nama }} </td>
+                                        <td>
+                                            <a href="{{ route('prodi.show', $item->id) }}" class="btn btn-info">Show</a>
+                                            <a href="{{ route('prodi.edit', $item->id) }}" class="btn btn-warning">Edit</a>
+                                            <form action="{{ route('prodi.destroy', $item->id) }}" method="POST" class="d-inline">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="submit" class="btn btn-danger show_confirm"
+                                                data-toggle="tooltip" title='Delete'>Delete</button>
+
+                                            </form>
+                                        </td>
                                     </tr>
                                 @endforeach
                             </tbody>

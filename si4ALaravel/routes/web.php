@@ -2,6 +2,7 @@
 use App\Http\Controllers\ProdiController;//jangan lupa import
 use App\Http\Controllers\FakultasController;//jangan lupa import
 use App\Http\Controllers\MahasiswaController;//jangan lupa import
+use App\Http\Controllers\DashboardController;//jangan lupa import
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -15,3 +16,4 @@ route::get('/profil',function (){
 route::resource('/fakultas',FakultasController::class);
 route::resource('/prodi',ProdiController::class);
 route::resource('/mahasiswa',MahasiswaController::class);
+route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard.index');
