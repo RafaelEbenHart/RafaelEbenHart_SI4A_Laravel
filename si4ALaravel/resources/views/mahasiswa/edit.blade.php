@@ -66,7 +66,7 @@
                         <div class="mb-3">
                             <label for="tempat_lahir" class="form-label">Tempat Lahir</label>
                             <input type="text" class="form-control" name="tempat_lahir"
-                                value="{{ old('tempat_lahir') }}">
+                                value="{{ old('tempat_lahir') ? old('tempat_lahir') : $mahasiswa->tempat_lahir }}">
                             @error('tempat_lahir')
                                 <div class="text-danger">{{ $message }}</div>
                             @enderror
