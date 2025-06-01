@@ -13,7 +13,7 @@
                 </div>
                 <!--end::Header-->
                 <!--begin::Form-->
-                <form action="{{ route('mahasiswa.edit', $mahasiswa->id) }}" method="POST" enctype="multipart/form-data">
+                <form action="{{ route('mahasiswa.update', $mahasiswa->id) }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     @method('PUT')
                     <!--begin::Body-->
