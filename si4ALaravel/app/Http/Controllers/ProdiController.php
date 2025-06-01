@@ -57,6 +57,7 @@ class ProdiController extends Controller
     public function show(Prodi $prodi)
     {
         //
+       return view('prodi.show', compact('prodi')); // mengirimkan data prodi dan fakultas ke view prodi.show
     }
 
     /**

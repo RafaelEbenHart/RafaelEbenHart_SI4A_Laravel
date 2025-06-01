@@ -207,7 +207,7 @@
                   class="user-image rounded-circle shadow"
                   alt="User Image"
                 />
-                <span class="d-none d-md-inline">Evan kotak</span>
+                <span class="d-none d-md-inline">Rafael</span>
               </a>
               <ul class="dropdown-menu dropdown-menu-lg dropdown-menu-end">
                 <!--begin::User Image-->
@@ -218,7 +218,7 @@
                     alt="User Image"
                   />
                   <p>
-                    Evan Gunawan - Web Developer
+                    Rafael - System Administrator
                     <small>Member since Nov. 2023</small>
                   </p>
                 </li>
@@ -281,9 +281,10 @@
             >
               <li class="nav-item">
                 <a class='nav-link' href='{{url('dashboard')}}'>
-                  <i class="nav-icon bi bi-house"></i>
+                  <i class="nav-icon bi bi-palette"></i>
                   <p>Dashboard</p>
                 </a>
+              </li>
               <li class="nav-item">
                 <a class='nav-link' href='{{url('fakultas')}}'>
                   <i class="nav-icon bi bi-palette"></i>
@@ -299,10 +300,27 @@
               <li class="nav-item">
                 <a class='nav-link' href='{{url('mahasiswa')}}'>
                   <i class="nav-icon bi bi-palette"></i>
-                  <p>mahasiswa</p>
+                  <p>Mahasiswa</p>
                 </a>
               </li>
-            </ul>
+              <li class="nav-item">
+                <a class='nav-link' href='{{url('matakuliah')}}'>
+                  <i class="nav-icon bi bi-palette"></i>
+                  <p>MataKuliah</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class='nav-link' href='{{url('jadwal')}}'>
+                  <i class="nav-icon bi bi-palette"></i>
+                  <p>Jadwal</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class='nav-link' href='{{url('sesi')}}'>
+                  <i class="nav-icon bi bi-palette"></i>
+                  <p>Sesi</p>
+                </a>
+              </li>
             <!--end::Sidebar Menu-->
           </nav>
         </div>
@@ -402,14 +420,14 @@
     <!--end::Script-->
 <!--Jquery CDN-->
 <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.0/sweetalert.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script type="text/javascript">
     $('.show_confirm').click(function(event) {
         var form = $(this).closest("form");
         var nama = $(this).data("nama");
         event.preventDefault();
-        swal({
-                title: `Apakah Anda yakin ingin menghapus data ${nama} ini?`,
+        Swal.fire({
+                title: Apakah Anda yakin ingin menghapus data ${nama} ini?,
                 text: "If you delete this, it will be gone forever.",
                 icon: "warning",
                 buttons: true,
@@ -420,21 +438,18 @@
                     form.submit();
                 }
             });
-    });
-</script>
-
-@session('success')
-<script type="text/javascript">
-    swal({
+      });
+  </script>
+    @session('success')
+    <script>
+      Swal.fire({
       title: "Good job!",
-      text: "{{ session('success') }}",
+      text: "{{session('success')}}",
       icon: "success"
-});
-</script>
-@endsession
-
-</body>
-</html>
+    });
+    </script>
+    @endsession
+    <!--end::Script-->
   </body>
   <!--end::Body-->
 </html>

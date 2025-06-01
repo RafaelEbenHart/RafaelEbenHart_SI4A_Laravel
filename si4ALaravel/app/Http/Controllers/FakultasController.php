@@ -56,8 +56,8 @@ class FakultasController extends Controller
     {
         //
         $fakultas = Fakultas::findOrFail($fakultas);
-        // dd($fakultas);
-        return view('fakultas.show', compact('fakultas'));
+        dd($fakultas);
+        // return view('fakultas.show', compact('fakultas'));
     }
 
     /**
