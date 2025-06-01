@@ -96,10 +96,18 @@ class FakultasController extends Controller
     public function destroy($fakultas)
     {
         //
-        $fakultas=Fakultas::findOrFail($fakultas);
+         $fakultas = Fakultas::findOrFail($fakultas);
 
-        $fakultas->delete();
+    // Delete all related prodi and their matakuliah
+    foreach ($fakultas->prodi as $prodi) {
+        // Delete all matakuliah for this prodi
+        $prodi->matakuliah()->delete();
+        // Delete the prodi
+        $prodi->delete();
+    }
 
-        return redirect()->route('fakultas.index')->with('success', 'Fakultas berhasil dihapus');
+    $fakultas->delete();
+
+    return redirect()->route('fakultas.index')->with('success', 'Fakultas berhasil dihapus');
     }
 }

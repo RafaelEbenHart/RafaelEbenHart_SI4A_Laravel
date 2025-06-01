@@ -103,6 +103,7 @@ class JadwalController extends Controller
      */
     public function destroy(Jadwal $jadwal)
     {
-        //
+        $jadwal->delete();
+        return redirect()->route('jadwal.index')->with('success', 'Jadwal berhasil dihapus');
     }
 }

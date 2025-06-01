@@ -53,7 +53,7 @@
                             <form action="{{ route('jadwal.destroy', $item->id) }}" method="POST" class="d-inline">
                                 @csrf
                                 @method('DELETE')
-                                <button type="submit" class="btn btn-danger show_confirm" 
+                                <button type="submit" class="btn btn-danger show_confirm"
                                 data-toggle="tooltip" title='Delete'>Delete</button>
 
                             </form>
