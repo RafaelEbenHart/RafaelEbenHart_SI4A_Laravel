@@ -24,7 +24,7 @@ class FakultasController extends Controller
      */
     public function create()
     {
-        //
+
         return view('fakultas.create');
     }
 
@@ -33,8 +33,10 @@ class FakultasController extends Controller
      */
     public function store(Request $request)
     {
-        //
-        //validasi input
+
+        if($request->user()->cannot('create',Fakultas::class)){
+            abort(403,'dek dekkk');
+        }
         $input = $request->validate(
             [
                 'nama'=>'required|unique:fakultas',
@@ -76,8 +78,12 @@ class FakultasController extends Controller
      */
     public function update(Request $request, $fakultas)
     {
-        //
+
         $fakultas = Fakultas::findOrFail($fakultas);
+
+        if($request->user()->cannot('update',$fakultas)){
+            abort(403);
+        }
          $input = $request->validate([
                 'nama'=>'required',
                 'singkatan'=>'required|Max:5',
@@ -93,10 +99,14 @@ class FakultasController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy($fakultas)
+    public function destroy(Request $request,$fakultas)
     {
-        //
-         $fakultas = Fakultas::findOrFail($fakultas);
+
+     $fakultas = Fakultas::findOrFail($fakultas);
+        if($request->user()->cannot('delete',$fakultas)){
+            abort(403);
+        }
+
 
     // Delete all related prodi and their matakuliah
     foreach ($fakultas->prodi as $prodi) {
